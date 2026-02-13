@@ -1,6 +1,7 @@
--- Ulstar UB Hub - Versión FINAL corregida y optimizada 2026
--- Mobile: Doble tap para abrir menú | Ultimate Battlegrounds
--- Veracruz 🌴 - Ejecuta con loadstring(game:HttpGet("RAW_LINK"))()
+-- Ulstar UB Hub - Versión CORREGIDA FINAL 2026
+-- Fix: Quitadas las barras extras en \~= 
+-- Mobile: Doble tap en pantalla vacía para abrir menú
+-- Ultimate Battlegrounds - Veracruz 🌴
 
 local Players           = game:GetService("Players")
 local RunService        = game:GetService("RunService")
@@ -13,7 +14,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 local root      = character:WaitForChild("HumanoidRootPart")
 local humanoid  = character:WaitForChild("Humanoid")
 
--- Configuración
+-- Configuración (cambia si quieres)
 local config = {
     toggles = {
         KillAura         = false,
@@ -28,7 +29,7 @@ local config = {
     }
 }
 
--- GUI mobile-friendly
+-- GUI simple y touch-friendly
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "UlstarUB"
 screenGui.ResetOnSpawn = false
@@ -105,7 +106,7 @@ UserInputService.InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.RightShift then alternarGUI() end
 end)
 
--- Lógica principal
+-- Lógica principal (cada 0.2s)
 local ultimo = 0
 RunService.Heartbeat:Connect(function()
     if tick() - ultimo < 0.2 then return end
