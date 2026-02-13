@@ -17,7 +17,7 @@ local humanoid  = character:WaitForChild("Humanoid")
 -- Configuración
 local config = {
     toggles = {
-        KillAura         = true,
+        \KillAura         = true,
         InfiniteUltimate = true,
         GodMode          = true,
         HitboxExpander   = true,
