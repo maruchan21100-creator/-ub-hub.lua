@@ -1,5 +1,6 @@
--- Ulstar UB Hub - Versión FINAL corregida (sin errores de sintaxis)
--- Doble tap para menú | Compatible Delta 2026 | Veracruz 🌴
+-- Ulstar UB Hub - Versión FINAL corregida y optimizada 2026
+-- Mobile: Doble tap para abrir menú | Ultimate Battlegrounds
+-- Veracruz 🌴 - Ejecuta con loadstring(game:HttpGet("RAW_LINK"))()
 
 local Players           = game:GetService("Players")
 local RunService        = game:GetService("RunService")
@@ -27,7 +28,7 @@ local config = {
     }
 }
 
--- GUI simple para móvil
+-- GUI mobile-friendly
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "UlstarUB"
 screenGui.ResetOnSpawn = false
@@ -53,7 +54,7 @@ title.Font               = Enum.Font.SourceSansBold
 title.TextScaled         = true
 title.Parent             = frame
 
--- Crear toggle
+-- Toggle creator
 local function createToggle(nombre, yPos, callback)
     local label = Instance.new("TextLabel")
     label.Size               = UDim2.new(0.6, 0, 0.1, 0)
@@ -92,7 +93,7 @@ createToggle("Modo Dios",            0.46, function(v) config.toggles.GodMode   
 createToggle("Hitbox Expander",      0.60, function(v) config.toggles.HitboxExpander   = v end)
 createToggle("Anti Lag",             0.74, function(v) config.toggles.AntiLag          = v end)
 
--- Abrir/cerrar menú
+-- Toggle menú
 local function alternarGUI()
     frame.Visible = not frame.Visible
     local trans = frame.Visible and 0.45 or 1
@@ -160,4 +161,4 @@ player.CharacterAdded:Connect(function(nc)
     humanoid = nc:WaitForChild("Humanoid")
 end)
 
-print("Ulstar UB Hub cargado - Doble tap para abrir. ¡A romper servidores! 🌴")
+print("Ulstar UB Hub cargado - Doble tap para abrir menú. ¡A romper en UB! 🌴")
