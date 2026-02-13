@@ -1,7 +1,7 @@
--- Ulstar UB Hub - Versión CORREGIDA FINAL 2026
--- Fix: Quitadas las barras extras en \~= 
+-- Ulstar UB Hub - Versión FINAL corregida 2026 (sin barras extras en \~=)
 -- Mobile: Doble tap en pantalla vacía para abrir menú
 -- Ultimate Battlegrounds - Veracruz 🌴
+-- Ejecuta con: loadstring(game:HttpGet("https://raw.githubusercontent.com/maruchan21100-creator/-ub-hub.lua/main/main.lua"))()
 
 local Players           = game:GetService("Players")
 local RunService        = game:GetService("RunService")
@@ -14,13 +14,13 @@ local character = player.Character or player.CharacterAdded:Wait()
 local root      = character:WaitForChild("HumanoidRootPart")
 local humanoid  = character:WaitForChild("Humanoid")
 
--- Configuración (cambia si quieres)
+-- Configuración
 local config = {
     toggles = {
-        KillAura         = false,
-        InfiniteUltimate = false,
-        GodMode          = false,
-        HitboxExpander   = false,
+        KillAura         = true,
+        InfiniteUltimate = true,
+        GodMode          = true,
+        HitboxExpander   = true,
         AntiLag          = true
     },
     values = {
@@ -29,7 +29,7 @@ local config = {
     }
 }
 
--- GUI simple y touch-friendly
+-- GUI simple y grande para móvil
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "UlstarUB"
 screenGui.ResetOnSpawn = false
@@ -41,7 +41,7 @@ frame.Position           = UDim2.new(0.15, 0, 0.2, 0)
 frame.BackgroundColor3   = Color3.fromRGB(15, 15, 20)
 frame.BackgroundTransparency = 0.45
 frame.BorderSizePixel    = 0
-frame.Visible            = false
+frame.Visible            = true
 frame.Active             = true
 frame.Draggable          = true
 frame.Parent             = screenGui
@@ -55,7 +55,7 @@ title.Font               = Enum.Font.SourceSansBold
 title.TextScaled         = true
 title.Parent             = frame
 
--- Toggle creator
+-- Función para crear toggles
 local function createToggle(nombre, yPos, callback)
     local label = Instance.new("TextLabel")
     label.Size               = UDim2.new(0.6, 0, 0.1, 0)
@@ -87,14 +87,14 @@ local function createToggle(nombre, yPos, callback)
     boton.MouseButton1Click:Connect(alternar)
 end
 
--- Toggles
+-- Toggles principales
 createToggle("Kill Aura",            0.18, function(v) config.toggles.KillAura         = v end)
 createToggle("Ultimate Infinito",    0.32, function(v) config.toggles.InfiniteUltimate = v end)
 createToggle("Modo Dios",            0.46, function(v) config.toggles.GodMode          = v end)
 createToggle("Hitbox Expander",      0.60, function(v) config.toggles.HitboxExpander   = v end)
 createToggle("Anti Lag",             0.74, function(v) config.toggles.AntiLag          = v end)
 
--- Toggle menú
+-- Abrir/cerrar menú
 local function alternarGUI()
     frame.Visible = not frame.Visible
     local trans = frame.Visible and 0.45 or 1
@@ -106,7 +106,7 @@ UserInputService.InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.RightShift then alternarGUI() end
 end)
 
--- Lógica principal (cada 0.2s)
+-- Lógica principal (cada 0.2s para no laggear)
 local ultimo = 0
 RunService.Heartbeat:Connect(function()
     if tick() - ultimo < 0.2 then return end
@@ -162,4 +162,4 @@ player.CharacterAdded:Connect(function(nc)
     humanoid = nc:WaitForChild("Humanoid")
 end)
 
-print("Ulstar UB Hub cargado - Doble tap para abrir menú. ¡A romper en UB! 🌴")
+print("Ulstar UB Hub cargado correctamente - Doble tap para abrir menú. ¡A dominar UB! 🌴")
